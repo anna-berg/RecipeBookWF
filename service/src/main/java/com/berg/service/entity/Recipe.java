@@ -5,9 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,18 +16,18 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 @Entity
-public class User {
+public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String eMail;
-    private String password;
+    private String title;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @Column(name = "author_id")
+    private Long authorId;
+    private String description;
+    private String measure;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @Column(name = "category_id")
+    private Long categoryRecipe;
 }

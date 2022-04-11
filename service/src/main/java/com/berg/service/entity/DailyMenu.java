@@ -5,30 +5,33 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class User {
+@Table(name = "daily_menu")
+public class DailyMenu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String eMail;
-    private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    private Long breakfast;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @Column(name = "first_snack")
+    private Long firstSnack;
+    private Long lunch;
+
+    @Column(name = "second_snack")
+    private Long secondSnack;
+    private Long dinner;
+    private String title;
 }

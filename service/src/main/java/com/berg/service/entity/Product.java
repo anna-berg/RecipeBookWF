@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,18 +15,14 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 @Entity
-public class User {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String eMail;
-    private String password;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private Integer proteins;
+    private Integer fats;
+    private Integer carbohydrates;
+    private String type;
 }

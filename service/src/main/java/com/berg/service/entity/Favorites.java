@@ -5,30 +5,32 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class User {
+public class Favorites {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String eMail;
-    private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @Column(name = "user_id")
+    private Long user;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @Column(name = "day_id")
+    private Long dailyMenus;
+
+    @Column(name = "recipe_id")
+    private Long recipes;
+    private int rating;
+    private LocalDateTime createdAt;
 }
