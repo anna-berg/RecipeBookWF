@@ -9,8 +9,7 @@ import com.berg.service.entity.Grouped;
 import com.berg.service.entity.Product;
 import com.berg.service.entity.Recipe;
 import com.berg.service.entity.User;
-import com.vladmihalcea.hibernate.naming.CamelCaseToSnakeCaseNamingStrategy;
-import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+//import com.vladmihalcea.hibernate.naming.CamelCaseToSnakeCaseNamingStrategy;
 import lombok.experimental.UtilityClass;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,9 +19,8 @@ public class HibernateUtil {
 
     public static SessionFactory buildSessionFactory (){
         var configuration = new Configuration();
-        configuration.setPhysicalNamingStrategy(new CamelCaseToSnakeCaseNamingStrategy());
+//        configuration.setPhysicalNamingStrategy(new CamelCaseToSnakeCaseNamingStrategy());
         configuration.addAnnotatedClass(User.class);
-        configuration.registerTypeOverride(new JsonBinaryType());
         configuration.addAnnotatedClass(Author.class);
         configuration.addAnnotatedClass(CategoryRecipe.class);
         configuration.addAnnotatedClass(DailyMenu.class);

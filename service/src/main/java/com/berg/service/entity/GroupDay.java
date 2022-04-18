@@ -25,10 +25,10 @@ public class GroupDay {
     private Long id;
 
     @Column(name = "group_id")
-    private Long group;
+    private Grouped group;
 
     @Column(name = "daily_menu_id")
-    private Long dailyMenu;
+    private DailyMenu dailyMenu;
 
     private int position;
 }

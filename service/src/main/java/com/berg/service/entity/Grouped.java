@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Data
 @NoArgsConstructor
@@ -22,8 +24,9 @@ public class Grouped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "users_id")
-    private Long user;
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private User user;
 
     @Column(name = "group_title")
     private String groupTitle;

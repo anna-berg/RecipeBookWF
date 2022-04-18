@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Data
 @NoArgsConstructor
@@ -23,11 +25,15 @@ public class Recipe {
     private Long id;
     private String title;
 
-    @Column(name = "author_id")
-    private Long authorId;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+
     private String description;
+
     private String measure;
 
-    @Column(name = "category_id")
-    private Long categoryRecipe;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CategoryRecipe categoryRecipe;
 }
