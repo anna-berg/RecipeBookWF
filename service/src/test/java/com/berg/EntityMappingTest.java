@@ -1,22 +1,25 @@
+package com.berg;
 
 import com.berg.service.entity.Author;
 import com.berg.service.entity.CategoryRecipe;
 import com.berg.service.entity.DailyMenu;
 import com.berg.service.entity.Recipe;
 import com.berg.service.util.HibernateUtil;
+import com.berg.util.EntityHelper;
+import com.berg.util.HibernateTestUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class EntityMappingTest {
 
     @Test
-    public void SaveRecipeTest() {
+    void SaveRecipeTest() {
         try (var sessionFactory = HibernateUtil.buildSessionFactory();
              var session = sessionFactory.openSession()) {
             session.beginTransaction();
-
 
 
             session.getTransaction().commit();
@@ -24,29 +27,23 @@ public class EntityMappingTest {
     }
 
     @Test
-    public void CreateRecipeTest() {
-        try (var sessionFactory = HibernateUtil.buildSessionFactory();
-             var session = sessionFactory.openSession()) {
-            session.beginTransaction();
-            var author = session.get(Author.class, 1L);
-            var category = session.get(CategoryRecipe.class, 5L);
-            var recipe1 = Recipe.builder()
-                    .author(author)
-                    .categoryRecipe(category)
-                    .title(" Хек, запеченный с специями и лимоном в рукаве + 2 огурца")
-                    .description(
-                            "Можно использовать филе хека, или целую тушку. Запекать 15-20 минут при температуре 180 градусов. Огурцы подать в виде салата с зеленью и полезным маслом.\n" +
-                            "Смешать все ингредиенты. Подавать на листьях салата.")
-                    .build();
+    void CreateRecipeTest() {
+        var recipe = EntityHelper.createRecipe();
 
-            session.save(recipe1);
-            Assertions.assertSame(recipe1, session.get(Recipe.class, recipe1.getId()));
+        try (var sessionFactory = HibernateTestUtil.buildSessionFactory();
+             var session = sessionFactory.openSession()) {
+
+            session.beginTransaction();
+
+            session.save(recipe);
+            session.evict(recipe);
+            assertThat(recipe).isEqualTo(session.get(Recipe.class, recipe.getId()));
             session.getTransaction().commit();
         }
     }
 
     @Test
-    void saveDailyMenu(){
+    void saveDailyMenu() {
 
         try (var sessionFactory = HibernateUtil.buildSessionFactory();
              var session = sessionFactory.openSession()) {

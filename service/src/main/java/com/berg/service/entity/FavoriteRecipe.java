@@ -3,43 +3,40 @@ package com.berg.service.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.mapping.ToOne;
+import lombok.ToString;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(exclude = "user")
+@ToString(exclude = "user")
 @Builder
 @Entity
-public class Favorites {
+@Table(name = "favorite_recipe")
+public class FavoriteRecipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "day_id")
-    private DailyMenu dailyMenus;
-
-    @ManyToOne
     @JoinColumn(name = "recipe_id")
-    private Recipe recipes;
+    private Recipe recipe;
 
     private int rating;
     private LocalDateTime createdAt;

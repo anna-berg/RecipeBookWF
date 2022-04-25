@@ -7,10 +7,6 @@ import java.util.Optional;
 
 public class UserService {
 
-    private final UserDao userDao = new UserDao();
+    private final UserDao userDao = UserDao.getInstance();
 
-    public Optional<UserDto> getUser(Long id) {
-        return userDao.findById(id)
-                .map(it -> new UserDto());
-    }
 }
