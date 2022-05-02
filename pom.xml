@@ -19,7 +19,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <spring.version>5.1.7.RELEASE</spring.version>
-        <lombok.version>1.18.22</lombok.version>
+            <lombok.version>1.18.22</lombok.version>
         <junit5.version>5.8.2</junit5.version>
         <querydsl.version>5.0.0</querydsl.version>
         <!-- Querydsl 5.0.0 uses javax, so we have to use Hibernate 5 so far (Hibernate 6 uses jakarta) -->
@@ -264,6 +264,8 @@
                             <version>${javax.persistence-api}</version>
                         </path>
                     </annotationProcessorPaths>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
 

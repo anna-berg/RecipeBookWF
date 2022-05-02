@@ -1,7 +1,6 @@
 package com.berg.dao;
 
-import com.berg.service.dao.UserDao;
-import com.berg.service.entity.User;
+import com.berg.entity.User;
 import com.berg.util.HibernateTestUtil;
 import com.berg.util.TestDataImporter;
 import lombok.Cleanup;

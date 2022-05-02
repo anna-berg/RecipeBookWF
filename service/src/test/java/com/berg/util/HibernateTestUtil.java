@@ -1,6 +1,5 @@
 package com.berg.util;
 
-import com.berg.service.util.HibernateUtil;
 import lombok.experimental.UtilityClass;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

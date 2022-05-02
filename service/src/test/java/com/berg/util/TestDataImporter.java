@@ -1,16 +1,15 @@
 package com.berg.util;
 
-import com.berg.service.entity.Author;
-import com.berg.service.entity.CategoryRecipe;
-import com.berg.service.entity.DailyMenu;
-import com.berg.service.entity.FavoriteRecipe;
-import com.berg.service.entity.Gender;
-import com.berg.service.entity.GroupDay;
-import com.berg.service.entity.Groups;
-import com.berg.service.entity.Product;
-import com.berg.service.entity.Recipe;
-import com.berg.service.entity.Role;
-import com.berg.service.entity.User;
+import com.berg.entity.Author;
+import com.berg.entity.CategoryRecipe;
+import com.berg.entity.DailyMenu;
+import com.berg.entity.Gender;
+import com.berg.entity.GroupDay;
+import com.berg.entity.Groups;
+import com.berg.entity.Product;
+import com.berg.entity.Recipe;
+import com.berg.entity.Role;
+import com.berg.entity.User;
 import lombok.Cleanup;
 import lombok.experimental.UtilityClass;
 import org.hibernate.Session;
@@ -23,6 +22,7 @@ public class TestDataImporter {
 
     public void importData(SessionFactory sessionFactory){
         @Cleanup Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
         var authorSveta = saveAuthor(session, "Sveta");
         var authorAnna = saveAuthor(session, "Anna");
@@ -53,17 +53,17 @@ public class TestDataImporter {
                 List.of(product1, product2, product3));
         var recipe4 = saveRecipe(session, authorAnna, "title4", "description4", secondSnackCategoryRecipe,
                 List.of(product1, product2, product3, product4));
-        var recipe5 = saveRecipe(session, authorAnna, "title5", "description5", dinnerCategoryRecipe,
+        var recipe5 = saveRecipe(session, authorSveta, "title5", "description5", dinnerCategoryRecipe,
                 List.of(product1, product2, product3, product4, product5));
-        var recipe6 = saveRecipe(session, authorAnna, "title6", "description6", breakfastCategoryRecipe,
+        var recipe6 = saveRecipe(session, authorSveta, "title6", "description6", breakfastCategoryRecipe,
                 List.of(product1, product2, product3, product4, product5, product6));
-        var recipe7 = saveRecipe(session, authorAnna, "title7", "description7", firstSnackCategoryRecipe,
+        var recipe7 = saveRecipe(session, authorSveta, "title7", "description7", firstSnackCategoryRecipe,
                 List.of(product1, product2, product3, product4, product5, product6, product7));
-        var recipe8 = saveRecipe(session, authorAnna, "title8", "description8", lunchCategoryRecipe,
+        var recipe8 = saveRecipe(session, authorSveta, "title8", "description8", lunchCategoryRecipe,
                 List.of(product1, product2, product3, product4, product5, product6, product7, product8));
-        var recipe9 = saveRecipe(session, authorAnna, "title9", "description9", secondSnackCategoryRecipe,
+        var recipe9 = saveRecipe(session, authorSveta, "title9", "description9", secondSnackCategoryRecipe,
                 List.of(product1, product2, product3, product4, product5, product6, product7, product8, product9));
-        var recipe10 = saveRecipe(session, authorAnna, "title10", "description10", dinnerCategoryRecipe,
+        var recipe10 = saveRecipe(session, authorSveta, "title10", "description10", dinnerCategoryRecipe,
                 List.of(product1, product2, product3, product4, product5, product6, product7, product8, product9, product10));
 
         var dailyMenu1 = saveDailyMenu(session, "TitleDailyMenu1", recipe1, recipe2, recipe3, recipe4, recipe5);
@@ -77,8 +77,6 @@ public class TestDataImporter {
         var groupDay1 = saveGroupDay(session, groupIvan, dailyMenu1, 1);
         var groupDay2 = saveGroupDay(session, groupIvan, dailyMenu2, 2);
 
-        session.beginTransaction();
-        session.flush();
         session.getTransaction().commit();
     }
 

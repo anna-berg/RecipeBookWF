@@ -1,13 +1,13 @@
 package com.berg.util;
 
-import com.berg.service.entity.Author;
-import com.berg.service.entity.CategoryRecipe;
-import com.berg.service.entity.DailyMenu;
-import com.berg.service.entity.Gender;
-import com.berg.service.entity.Product;
-import com.berg.service.entity.Recipe;
-import com.berg.service.entity.Role;
-import com.berg.service.entity.User;
+import com.berg.entity.Author;
+import com.berg.entity.CategoryRecipe;
+import com.berg.entity.DailyMenu;
+import com.berg.entity.Gender;
+import com.berg.entity.Product;
+import com.berg.entity.Recipe;
+import com.berg.entity.Role;
+import com.berg.entity.User;
 import lombok.experimental.UtilityClass;
 
 import java.util.List;
