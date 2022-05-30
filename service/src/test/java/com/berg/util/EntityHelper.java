@@ -37,11 +37,13 @@ public class EntityHelper {
         return Product.builder()
                 .name(name)
                 .type(type)
+                .fats(1)
+                .proteins(2)
+                .carbohydrates(3)
                 .build();
     }
 
-    public Recipe createRecipe() {
-        var category = createCategory();
+    public Recipe createRecipe(CategoryRecipe category) {
         return Recipe.builder()
                 .categoryRecipe(category)
                 .title("Recipe title")

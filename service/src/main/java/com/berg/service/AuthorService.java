@@ -1,18 +1,23 @@
 package com.berg.service;
 
-import com.berg.dao.AuthorRepository;
+import com.berg.integration.dao.AuthorRepository;
 import com.berg.dto.AuthorCreateDto;
 import com.berg.dto.AuthorReadDto;
 import com.berg.entity.Author;
 import com.berg.mapper.AuthorCreateMapper;
 import com.berg.mapper.AuthorReadMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
+@Service
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 @RequiredArgsConstructor
 public class AuthorService {
 

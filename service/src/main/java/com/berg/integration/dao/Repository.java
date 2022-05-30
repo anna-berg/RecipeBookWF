@@ -1,4 +1,4 @@
-package com.berg.dao;
+package com.berg.integration.dao;
 
 import com.berg.entity.BaseEntity;
 

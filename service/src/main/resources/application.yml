@@ -1,0 +1,22 @@
+#db:
+#  username: postgres
+#  password: Anut04ka
+#  driver: org.postgresql.Driver
+#  url:jdbc: postgresql://localhost:5433/recipe_book
+#  hosts: localhost, 127.0.0.1
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/recipe_book
+    username: postgres
+    password: Anut04ka
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties.hibernate:
+      show_sql: true
+      format_sql: true
+      hbm2ddl.auto: validate
+
+logging:
+  level:
+    root: INFO

@@ -1,4 +1,4 @@
-package com.berg.dao;
+package com.berg.integration.dao;
 
 import com.berg.entity.BaseEntity;
 import lombok.Getter;
@@ -25,7 +25,8 @@ public abstract class RepositoryBase<K extends Serializable, E extends BaseEntit
 
     @Override
     public void delete(K id) {
-        entityManager.remove(id);
+        var entity = Optional.ofNullable(entityManager.find(clazz, id));
+        entity.ifPresent(entityManager::remove);
         entityManager.flush();
     }
 
@@ -42,9 +43,9 @@ public abstract class RepositoryBase<K extends Serializable, E extends BaseEntit
     @Override
     public List<E> findAll() {
         var cb = entityManager.getCriteriaBuilder();
-        var creteria = cb.createQuery(clazz);
-        creteria.from(clazz);
-        return entityManager.createQuery(creteria)
+        var criteria = cb.createQuery(clazz);
+        criteria.from(clazz);
+        return entityManager.createQuery(criteria)
                 .getResultList();
     }
 }

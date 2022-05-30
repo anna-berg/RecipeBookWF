@@ -1,7 +1,9 @@
 package com.berg.mapper;
 
 import com.berg.entity.Recipe;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RecipeReadMapper implements Mapper<Recipe, RecipeReadDto> {
 
     @Override

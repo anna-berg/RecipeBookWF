@@ -42,6 +42,4 @@ public class Product implements BaseEntity<Long> {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_id"))
     private List<Recipe> recipes = new ArrayList<>();
-
-
 }

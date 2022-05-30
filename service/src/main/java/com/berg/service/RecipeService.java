@@ -1,18 +1,23 @@
 package com.berg.service;
 
-import com.berg.dao.RecipeRepository;
+import com.berg.integration.dao.RecipeRepository;
 import com.berg.dto.RecipeCreateDto;
 import com.berg.entity.Recipe;
 import com.berg.mapper.RecipeCreateMapper;
 import com.berg.mapper.RecipeReadDto;
 import com.berg.mapper.RecipeReadMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
+@Service
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 @RequiredArgsConstructor
 public class RecipeService {
     

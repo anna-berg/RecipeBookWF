@@ -1,10 +1,11 @@
-package com.berg.dao;
+package com.berg.integration.dao;
 
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Predicate;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
 
@@ -20,12 +21,15 @@ public class QPredicate {
     }
 
     public <T> QPredicate add(T object, Function<T, Predicate> function) {
-       if ((object instanceof List)) {
-           if(!((List<?>) object).isEmpty()) {
-               predicates.add(function.apply(object));
-           } else return this;
-       } else if (object != null) {
+       if (object != null) {
             predicates.add(function.apply(object));
+        }
+        return this;
+    }
+
+    public <T extends Collection<?>> QPredicate add(T list, Function<T, Predicate> function) {
+        if(list != null && !list.isEmpty()){
+            predicates.add(function.apply(list));
         }
         return this;
     }

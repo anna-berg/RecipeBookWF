@@ -2,7 +2,9 @@ package com.berg.mapper;
 
 import com.berg.dto.ProductCreateDto;
 import com.berg.entity.Product;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProductCreateMapper implements Mapper<ProductCreateDto, Product> {
 
     @Override
@@ -13,7 +15,6 @@ public class ProductCreateMapper implements Mapper<ProductCreateDto, Product> {
                 .fats(object.fats())
                 .proteins(object.proteins())
                 .type(object.type())
-                .recipes(object.recipes())
                 .build();
     }
 }

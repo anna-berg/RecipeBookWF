@@ -1,29 +1,29 @@
-package com.berg.dao;
+package com.berg.integration.dao;
 
 import com.berg.entity.User;
 import com.querydsl.jpa.impl.JPAQuery;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.hibernate.Session;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
-import static com.berg.service.entity.QUser.user;
+import static com.berg.entity.QUser.user;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserDao {
 
     private static final UserDao INSTANCE = new UserDao();
 
-    public List<User> findAll(Session session) {
-        return new JPAQuery<User>(session)
+    public List<User> findAll(EntityManager entityManager) {
+        return new JPAQuery<User>(entityManager)
                 .select(user)
                 .from(user)
                 .fetch();
     }
 
-    public List<User> findAllByName(Session session, String name) {
-        return new JPAQuery<User>(session)
+    public List<User> findAllByName(EntityManager entityManager, String name) {
+        return new JPAQuery<User>(entityManager)
                 .select(user)
                 .from(user)
                 .where(user.name.eq(name))

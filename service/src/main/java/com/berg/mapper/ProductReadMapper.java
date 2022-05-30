@@ -2,7 +2,9 @@ package com.berg.mapper;
 
 import com.berg.dto.ProductReadDto;
 import com.berg.entity.Product;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProductReadMapper implements Mapper<Product, ProductReadDto>{
 
     @Override

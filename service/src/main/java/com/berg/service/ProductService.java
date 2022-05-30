@@ -1,18 +1,23 @@
 package com.berg.service;
 
-import com.berg.dao.ProductRepository;
+import com.berg.integration.dao.ProductRepository;
 import com.berg.dto.ProductCreateDto;
 import com.berg.dto.ProductReadDto;
 import com.berg.entity.Product;
 import com.berg.mapper.ProductCreateMapper;
 import com.berg.mapper.ProductReadMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
+@Service
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 @RequiredArgsConstructor
 public class ProductService {
 
@@ -42,7 +47,7 @@ public class ProductService {
 
     public List<ProductReadDto> findAll() {
         return productRepository.findAll().stream()
-                .map(productReadMapper::mapFrom)
+                .map(product -> productReadMapper.mapFrom(product))
                 .collect(toList());
     }
 }

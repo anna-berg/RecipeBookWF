@@ -2,7 +2,9 @@ package com.berg.mapper;
 
 import com.berg.dto.RecipeCreateDto;
 import com.berg.entity.Recipe;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RecipeCreateMapper implements Mapper<RecipeCreateDto, Recipe> {
     @Override
     public Recipe mapFrom(RecipeCreateDto object) {
