@@ -44,5 +44,5 @@ public class User implements BaseEntity<Long> {
     private List<FavoriteRecipe> favoriteRecipes;
 
     @OneToMany(mappedBy = "user")
-    private  List<Groups> groups;
+    private List<Groups> groups;
 }

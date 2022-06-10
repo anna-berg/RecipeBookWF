@@ -22,11 +22,12 @@ import java.util.List;
 @ToString(exclude = "recipes")
 @Builder
 @Entity
-public class Author implements BaseEntity<Long>{
+public class Author implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     @OneToMany(mappedBy = "author")

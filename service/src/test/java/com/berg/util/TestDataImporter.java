@@ -18,7 +18,7 @@ import java.util.List;
 @UtilityClass
 public class TestDataImporter {
 
-    public void importData(EntityManager entityManager){
+    public void importData(EntityManager entityManager) {
 //        entityManager.createNativeQuery("""
 //                SELECT SETVAL('author_id_seq_id_seq', (1));
 //                SELECT SETVAL('category_recipe_id_seq', (1));
@@ -78,7 +78,7 @@ public class TestDataImporter {
         var groupDay2 = saveGroupDay(entityManager, groupIvan, dailyMenu2, 2);
     }
 
-    private Author saveAuthor(EntityManager entityManager, String name){
+    private Author saveAuthor(EntityManager entityManager, String name) {
         var author = Author.builder()
                 .name(name)
                 .build();
@@ -86,7 +86,7 @@ public class TestDataImporter {
         return author;
     }
 
-    private CategoryRecipe saveCategoryRecipe(EntityManager entityManager, String category){
+    private CategoryRecipe saveCategoryRecipe(EntityManager entityManager, String category) {
         var recipe = CategoryRecipe.builder()
                 .category(category)
                 .build();
@@ -96,7 +96,7 @@ public class TestDataImporter {
 
     private DailyMenu saveDailyMenu(EntityManager entityManager, String title, Recipe breakfast,
                                     Recipe firstSnack, Recipe lunch, Recipe secondSnack,
-                                    Recipe dinner){
+                                    Recipe dinner) {
         DailyMenu dailyMenu = DailyMenu.builder()
                 .title(title)
                 .breakfast(breakfast)
@@ -109,7 +109,7 @@ public class TestDataImporter {
         return dailyMenu;
     }
 
-    private GroupDay saveGroupDay (EntityManager entityManager, Groups group, DailyMenu dailyMenu, int position){
+    private GroupDay saveGroupDay(EntityManager entityManager, Groups group, DailyMenu dailyMenu, int position) {
         GroupDay groupDay = GroupDay.builder()
                 .group(group)
                 .dailyMenu(dailyMenu)
@@ -119,7 +119,7 @@ public class TestDataImporter {
         return groupDay;
     }
 
-    private Groups saveGroup(EntityManager entityManager, String title, User user){
+    private Groups saveGroup(EntityManager entityManager, String title, User user) {
         Groups group = Groups.builder()
                 .groupTitle(title)
                 .user(user)
@@ -128,7 +128,7 @@ public class TestDataImporter {
         return group;
     }
 
-    private Product saveProduct(EntityManager entityManager, String name, String productType){
+    private Product saveProduct(EntityManager entityManager, String name, String productType) {
         var product = Product.builder()
                 .name(name)
                 .type(productType)
@@ -138,7 +138,7 @@ public class TestDataImporter {
     }
 
     private Recipe saveRecipe(EntityManager entityManager, Author author, String title, String description,
-                              CategoryRecipe categoryRecipe, List<Product> products){
+                              CategoryRecipe categoryRecipe, List<Product> products) {
         var recipe = Recipe.builder()
                 .author(author)
                 .title(title)
@@ -146,12 +146,12 @@ public class TestDataImporter {
                 .categoryRecipe(categoryRecipe)
                 .products(products)
                 .build();
-         entityManager.persist(recipe);
+        entityManager.persist(recipe);
         return recipe;
     }
 
     private User saveUser(EntityManager entityManager, String email, String password,
-                          Role role, Gender gender, String name){
+                          Role role, Gender gender, String name) {
         User user = User.builder()
                 .email(email)
                 .password(password)

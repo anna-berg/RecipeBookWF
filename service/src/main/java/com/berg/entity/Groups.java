@@ -24,7 +24,7 @@ import java.util.List;
 @ToString(of = "id")
 @Builder
 @Entity
-public class Groups implements BaseEntity<Long>  {
+public class Groups implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

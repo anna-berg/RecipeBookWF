@@ -13,6 +13,7 @@ public record UserReadDto(Long id,
                           String password,
                           Role role,
                           Gender gender,
+//                         FavoriteRecipe заенить на FavoriteRecipeДТО и Groups на Groups
                           List<FavoriteRecipe> favoriteRecipes,
                           List<Groups> groups) {
 

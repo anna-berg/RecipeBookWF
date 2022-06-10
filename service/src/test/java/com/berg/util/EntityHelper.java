@@ -17,13 +17,13 @@ public class EntityHelper {
 
     public Author createAuthor() {
         return Author.builder()
-                .name("Sveta")
+                .name("Nastya")
                 .build();
     }
 
     public CategoryRecipe createCategory() {
         return CategoryRecipe.builder()
-                .category("Breakfast")
+                .category("TestBreakfast")
                 .build();
     }
 

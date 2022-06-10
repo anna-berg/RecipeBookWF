@@ -1,5 +1,4 @@
 CREATE DATABASE recipe_book;
-DROP DATABASE recipe_book;
 
 CREATE TABLE product
 (
@@ -40,7 +39,7 @@ CREATE TABLE recipe_product
     product_id INT REFERENCES product,
     PRIMARY KEY (recipe_id, product_id)
 );
--- добавить название к DaylyMenu
+
 CREATE TABLE users
 (
     id       SERIAL PRIMARY KEY,

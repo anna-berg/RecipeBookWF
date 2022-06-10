@@ -1,4 +1,4 @@
-package com.berg.integration.dao;
+package com.berg.Repositary;
 
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Predicate;
@@ -21,14 +21,14 @@ public class QPredicate {
     }
 
     public <T> QPredicate add(T object, Function<T, Predicate> function) {
-       if (object != null) {
+        if (object != null) {
             predicates.add(function.apply(object));
         }
         return this;
     }
 
     public <T extends Collection<?>> QPredicate add(T list, Function<T, Predicate> function) {
-        if(list != null && !list.isEmpty()){
+        if (list != null && !list.isEmpty()) {
             predicates.add(function.apply(list));
         }
         return this;

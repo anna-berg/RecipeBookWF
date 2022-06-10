@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(of = {"id","title"})
+@EqualsAndHashCode(of = {"id", "title"})
 @ToString(exclude = {"products", "categoryRecipe"})
 @Entity
 public class Recipe implements BaseEntity<Long> {
@@ -45,7 +46,7 @@ public class Recipe implements BaseEntity<Long> {
     private CategoryRecipe categoryRecipe;
 
     @Builder.Default
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "recipe_product",
             joinColumns = @JoinColumn(name = "recipe_id"),
