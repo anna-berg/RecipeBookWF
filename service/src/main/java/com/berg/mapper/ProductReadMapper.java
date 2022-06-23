@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class ProductReadMapper implements Mapper<Product, ProductReadDto> {
 
     @Override
-    public ProductReadDto mapFrom(Product object) {
+    public ProductReadDto map(Product object) {
         return new ProductReadDto(object.getId(),
                 object.getName(),
                 object.getProteins(),

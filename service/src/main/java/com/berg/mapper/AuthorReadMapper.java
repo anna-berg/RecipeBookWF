@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AuthorReadMapper implements Mapper<Author, AuthorReadDto> {
     @Override
-    public AuthorReadDto mapFrom(Author object) {
+    public AuthorReadDto map(Author object) {
         return new AuthorReadDto(
                 object.getId(),
                 object.getName(),

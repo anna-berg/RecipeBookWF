@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserCreateMapper implements Mapper<UserCreateDto, User> {
     @Override
-    public User mapFrom(UserCreateDto object) {
+    public User map(UserCreateDto object) {
         return User.builder()
                 .name(object.name())
                 .build();

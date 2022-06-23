@@ -19,11 +19,6 @@ import java.util.List;
 public class TestDataImporter {
 
     public void importData(EntityManager entityManager) {
-//        entityManager.createNativeQuery("""
-//                SELECT SETVAL('author_id_seq_id_seq', (1));
-//                SELECT SETVAL('category_recipe_id_seq', (1));
-//                SELECT SETVAL('daily_menu_id_seq', (1));
-//                """);
         var authorSveta = saveAuthor(entityManager, "Sveta");
         var authorAnna = saveAuthor(entityManager, "Anna");
 

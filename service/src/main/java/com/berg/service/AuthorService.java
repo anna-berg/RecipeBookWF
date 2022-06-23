@@ -1,37 +1,61 @@
 package com.berg.service;
 
+import com.berg.dto.AuthorCreateEditDto;
+import com.berg.dto.AuthorReadDto;
+import com.berg.mapper.AuthorCreateEditMapper;
+import com.berg.mapper.AuthorReadMapper;
+import com.berg.repositary.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class AuthorService {
-//
-//    private final AuthorRepository authorRepository;
-//    private final AuthorCreateMapper authorCreateMapper;
-//    private final AuthorReadMapper authorReadMapper;
-//
-//    public Long create(AuthorCreateDto authorDto) {
-//        var authorEntity = authorCreateMapper.mapFrom(authorDto);
-//        return authorRepository.save(authorEntity).getId();
-//    }
-//
-//    public Optional<AuthorReadDto> findById(Long id) {
-//        return authorRepository.findById(id)
-//                .map(authorReadMapper::mapFrom);
-//    }
-//
-//    public boolean delete(Long id) {
-//        var maybeAuthor = authorRepository.findById(id);
-//        maybeAuthor.ifPresent(authorRepository::delete);
-//        return maybeAuthor.isPresent();
-//    }
-//
-//    public List<AuthorReadDto> findAll() {
-//        return authorRepository.findAll().stream()
-//                .map(authorReadMapper::mapFrom)
-//                .collect(toList());
-//    }
+
+    private final AuthorRepository authorRepository;
+    private final AuthorCreateEditMapper authorCreateEditMapper;
+    private final AuthorReadMapper authorReadMapper;
+
+    @Transactional
+    public Optional<AuthorReadDto> update(Long id, AuthorCreateEditDto authorDto){
+        return authorRepository.findById(id)
+                .map(entity -> authorCreateEditMapper.map(authorDto, entity))
+                .map(authorRepository::saveAndFlush)
+                .map(authorReadMapper::map);
+    }
+
+    @Transactional
+    public AuthorReadDto create(AuthorCreateEditDto authorDto) {
+        return Optional.of(authorDto)
+                .map(authorCreateEditMapper::map)
+                .map(authorRepository::save)
+                .map(authorReadMapper::map)
+                .orElseThrow();
+    }
+
+    public Optional<AuthorReadDto> findById(Long id) {
+        return authorRepository.findById(id)
+                .map(authorReadMapper::map);
+    }
+
+    @Transactional
+    public boolean delete(Long id) {
+        return authorRepository.findById(id)
+                .map(author -> {
+                    authorRepository.delete(author);
+                    return true;
+                })
+                .orElse(false);
+    }
+
+    public List<AuthorReadDto> findAll() {
+        return authorRepository.findAll().stream()
+                .map(authorReadMapper::map)
+                .toList();
+    }
 }

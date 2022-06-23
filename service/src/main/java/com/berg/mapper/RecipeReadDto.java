@@ -1,8 +1,8 @@
 package com.berg.mapper;
 
+import com.berg.dto.ProductReadDto;
 import com.berg.entity.Author;
 import com.berg.entity.CategoryRecipe;
-import com.berg.entity.Product;
 
 import java.util.List;
 
@@ -12,5 +12,5 @@ public record RecipeReadDto(Long id,
                             String description,
                             String measure,
                             CategoryRecipe categoryRecipe,
-                            List<Product> products) {
+                            List<ProductReadDto> products) {
 }

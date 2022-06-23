@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RecipeCreateMapper implements Mapper<RecipeCreateDto, Recipe> {
     @Override
-    public Recipe mapFrom(RecipeCreateDto object) {
+    public Recipe map(RecipeCreateDto object) {
         return Recipe.builder()
                 .author(object.author())
                 .categoryRecipe(object.categoryRecipe())

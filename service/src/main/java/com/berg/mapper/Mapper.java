@@ -2,5 +2,9 @@ package com.berg.mapper;
 
 public interface Mapper<F, T> {
 
-    T mapFrom(F object);
+    T map(F object);
+
+    default T map(F fromObject, T toObject) {
+        return toObject;
+    }
 }

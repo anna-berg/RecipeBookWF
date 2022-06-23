@@ -6,9 +6,8 @@ import lombok.Value;
 import java.util.List;
 
 @Value
-public class AuthorReadDto {
+public class AuthorCreateEditDto {
 
-    Long id;
     String name;
     List<Recipe> recipes;
 }

@@ -6,6 +6,10 @@
 #  hosts: localhost, 127.0.0.1
 
 spring:
+  mvc:
+    view:
+      prefix:
+      suffix: .jsp
   datasource:
     url: jdbc:postgresql://localhost:5433/recipe_book
     username: postgres
@@ -17,7 +21,9 @@ spring:
       format_sql: true
       hbm2ddl.auto: update
       dialect:  org.hibernate.dialect.PostgreSQLDialect
+#   что бы транзакции не открывались на уровне контроллеров
+    open-in-view: false
 
 logging:
   level:
-    root: WARN
+    root: info

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class ProductCreateMapper implements Mapper<ProductCreateDto, Product> {
 
     @Override
-    public Product mapFrom(ProductCreateDto object) {
+    public Product map(ProductCreateDto object) {
         return Product.builder()
                 .name(object.name())
                 .carbohydrates(object.carbohydrates())

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Author</title>
+</head>
+<body>
+<form th:action="@{/author/{authorId}/update(authorId=${author.id})}" method="post" th:object="${author}">
+    <label for="name">Username:
+        <input id="name" type="text" name="name" th:value="*{name}">
+    </label><br>
+</form>
+</body>
+</html>

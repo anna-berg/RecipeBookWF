@@ -1,41 +1,63 @@
 package com.berg.service;
 
+import com.berg.dto.UserCreateEditDto;
+import com.berg.dto.UserReadDto;
+import com.berg.mapper.UserCreateEditMapper;
+import com.berg.mapper.UserReadMapper;
+import com.berg.repositary.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class UserService {
 
-//    private final UserRepository userRepository;
-//    private final UserCreateMapper userCreateMapper;
-//    private final UserReadMapper userReadMapper;
-//
-//    public Long create(UserCreateDto userDto) {
-//        var userEntity = userCreateMapper.mapFrom(userDto);
-//        return userRepository.save(userEntity).getId();
-//    }
-//
-//    public Optional<UserReadDto> findById(Long id) {
-//        return userRepository.findById(id)
-//                .map(userReadMapper::mapFrom);
-//    }
-//
-//    public boolean delete(Long id) {
-//        var maybeUser = userRepository.findById(id);
-//        maybeUser.ifPresent(user -> userRepository.delete(id));
-//        return maybeUser.isPresent();
-//    }
-//
-//    public void update(User user) {
-//        userRepository.update(user);
-//    }
-//
-//    public List<UserReadDto> findAll() {
-//        return userRepository.findAll().stream()
-//                .map(userReadMapper::mapFrom)
-//                .collect(toList());
-//    }
+    private final UserRepository userRepository;
+    private final UserReadMapper userReadMapper;
+    private final UserCreateEditMapper userCreateEditMapper;
+
+    public List<UserReadDto> findAll() {
+        return userRepository.findAll().stream()
+                .map(userReadMapper::map)
+                .toList();
+    }
+
+    public Optional<UserReadDto> findById(Long id) {
+        return userRepository.findById(id)
+                .map(userReadMapper::map);
+    }
+
+    @Transactional
+    public UserReadDto create(UserCreateEditDto userDto) {
+        return Optional.of(userDto)
+                .map(userCreateEditMapper::map)
+                .map(userRepository::save)
+                .map(userReadMapper::map)
+                .orElseThrow();
+    }
+
+    @Transactional
+    public Optional<UserReadDto> update(Long id, UserCreateEditDto userDto) {
+        return userRepository.findById(id)
+                .map(entity -> userCreateEditMapper.map(userDto, entity))
+                .map(userRepository::saveAndFlush)
+                .map(userReadMapper::map);
+    }
+
+    @Transactional
+    public boolean delete(Long id) {
+        return userRepository.findById(id)
+                .map(entity -> {
+                    userRepository.delete(entity);
+                    userRepository.flush();
+                    return true;
+                })
+                .orElse(false);
+    }
+
 }

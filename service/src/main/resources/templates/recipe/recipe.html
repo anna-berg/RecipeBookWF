@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe</title>
+</head>
+<body>
+    <span th:text="${recipe.title}">Title</span><br>
+    <span th:text="${recipe.categoryRecipe.category}">CategoryRecipe</span><br>
+    <span th:text="${recipe.description}">Description</span><br>
+    <span th:text="${recipe.author.name}">Author</span><br>
+    <span th:text="${recipe.measure}">Measure</span><br>
+    <div th:each="product : ${recipe.products}">
+        <span th:text="${product.name}">Product Name</span><br>
+    </div>
+</body>
+</html>
