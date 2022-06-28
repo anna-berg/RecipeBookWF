@@ -6,8 +6,10 @@
     <title>Recipes</title>
 </head>
 <body>
-    <div th:each="recipe : ${recipes}">
-        <a th:href="@{'/recipes/' + ${recipe.id}} " th:text="|${recipe.id}. ${recipe.title}|">Recipe</a>
-    </div>
+    <label for="recipes">Recipes:
+        <div id="recipes" th:each="recipe : ${recipes}">
+            <a th:href="@{'/recipes/' + ${recipe.id}} " th:text="|${recipe.id}. ${recipe.title}|">Recipe</a>
+        </div>
+    </label>
 </body>
 </html>

@@ -1,0 +1,15 @@
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+</head>
+<body>
+    <label for="categories">Categories:
+        <div id="categories" th:each="category : ${categories}">
+            <a th:href="@{'/categories/' + ${category.getId()}} " th:text="|${category.getId()}. ${category.getCategory()}|">Category</a>
+        </div>
+    </label>
+</body>
+</html>

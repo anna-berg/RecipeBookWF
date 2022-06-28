@@ -1,14 +1,14 @@
 package com.berg.dto;
 
-import com.berg.entity.Recipe;
+import lombok.Value;
 
-import java.util.List;
+@Value
+public class ProductReadDto {
 
-public record ProductReadDto(Long id,
-                             String name,
-                             Integer proteins,
-                             Integer fats,
-                             Integer carbohydrates,
-                             String type,
-                             List<Recipe> recipes) {
+    Long id;
+    String name;
+    Integer proteins;
+    Integer fats;
+    Integer carbohydrates;
+    String type;
 }

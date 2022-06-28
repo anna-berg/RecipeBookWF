@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+    <label for="menu">Daily Menu:
+        <span id="menu" th:text="${menu.getTitle()}">Menu</span>
+    </label> <br>
+    <label for="breakfast">Breakfast: <br>
+        <a id="breakfast" th:href="@{'/recipes/' + ${menu.getBreakfast().id}} " th:text="|${menu.getBreakfast().title}|">Breakfast</a>
+    </label>   <br>
+
+    <label for="firstSnack">First Snack: <br>
+        <a id="firstSnack" th:href="@{'/recipes/' + ${menu.getFirstSnack().id}} " th:text="|${menu.getFirstSnack().title}|">FirstSnack</a>
+    </label> <br>
+
+    <label for="lunch">Lunch: <br>
+        <a id="lunch" th:href="@{'/recipes/' + ${menu.getLunch().id}} " th:text="|${menu.getLunch().title}|">Lunch</a>
+    </label> <br>
+
+    <label for="secondSnack">SecondSnack: <br>
+        <a id="secondSnack" th:href="@{'/recipes/' + ${menu.getSecondSnack().id}} " th:text="|${menu.getSecondSnack().title}|">SecondSnack</a>
+    </label> <br>
+
+    <label for="dinner">Dinner: <br>
+        <a id="dinner" th:href="@{'/recipes/' + ${menu.getDinner().id}} " th:text="|${menu.getDinner().title}|">Dinner</a>
+    </label> <br>
+</body>
+</html>

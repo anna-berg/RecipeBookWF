@@ -46,3 +46,14 @@ public class User implements BaseEntity<Long> {
     @OneToMany(mappedBy = "user")
     private List<Groups> groups;
 }
+
+
+
+
+
+
+
+
+
+
+

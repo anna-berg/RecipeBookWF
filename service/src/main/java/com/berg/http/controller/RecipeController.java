@@ -42,7 +42,8 @@ public class RecipeController {
     }
 
     @PostMapping("/{id}/update")
-    public String update(@PathVariable("id") Long id, @ModelAttribute RecipeCreateDto recipeDto) {
+    public String update(@PathVariable("id") Long id,
+                         @ModelAttribute RecipeCreateDto recipeDto) {
         return recipeService.update(id, recipeDto)
                 .map(it -> "redirect:/recipes/{id}")
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

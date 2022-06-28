@@ -2,10 +2,15 @@ package com.berg.mapper;
 
 import com.berg.dto.UserReadDto;
 import com.berg.entity.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserReadMapper implements Mapper<User, UserReadDto> {
+@RequiredArgsConstructor
+public class UserToReadDtoMapper implements Mapper<User, UserReadDto> {
+
+    private final FavoriteRecipeToDtoForUserMapper favoriteRecipeToDtoForUserMapper;
+
     @Override
     public UserReadDto map(User object) {
         return new UserReadDto(object.getId(),
@@ -13,8 +18,7 @@ public class UserReadMapper implements Mapper<User, UserReadDto> {
                 object.getEmail(),
                 object.getPassword(),
                 object.getRole(),
-                object.getGender(),
-                object.getFavoriteRecipes(),
-                object.getGroups());
+                object.getGender()
+        );
     }
 }

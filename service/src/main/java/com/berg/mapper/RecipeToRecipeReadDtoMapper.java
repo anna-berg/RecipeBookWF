@@ -1,23 +1,19 @@
 package com.berg.mapper;
 
-import com.berg.dto.ProductReadDto;
+import com.berg.dto.RecipeReadDto;
 import com.berg.entity.Recipe;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.collections4.ListUtils;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class RecipeReadMapper implements Mapper<Recipe, RecipeReadDto> {
+public class RecipeToRecipeReadDtoMapper implements Mapper<Recipe, RecipeReadDto> {
 
-    private final ProductReadMapper productReadMapper;
+    private final ProductToProductDtoForRecipe productToProductDtoForRecipe;
 
     @Override
     public RecipeReadDto map(Recipe object) {
-        List<ProductReadDto> listOfProductDto = new ArrayList<>();
 
         return new RecipeReadDto(
                 object.getId(),
@@ -26,9 +22,9 @@ public class RecipeReadMapper implements Mapper<Recipe, RecipeReadDto> {
                 object.getDescription(),
                 object.getMeasure(),
                 object.getCategoryRecipe(),
-                Optional.ofNullable(object.getProducts().stream()
-                        .map(productReadMapper::map)
+                ListUtils.emptyIfNull(object.getProducts().stream()
+                        .map(productToProductDtoForRecipe::map)
                         .toList())
-                        .orElse(listOfProductDto));
+        );
     }
 }

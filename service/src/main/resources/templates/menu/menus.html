@@ -1,0 +1,15 @@
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Menus</title>
+</head>
+<body>
+    <label for="menus">Daily Menus:
+        <div id="menus" th:each="menu : ${menus}">
+            <a th:href="@{'/menus/' + ${menu.getId()}} " th:text="|${menu.getId()}. ${menu.getTitle()}|">Menu</a>
+        </div>
+    </label>
+</body>
+</html>

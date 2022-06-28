@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite</title>
+</head>
+<body>
+    <label for="user">User:
+        <span id="user" th:text="${favorite.getUser().getName()} (${favorite.getUser.getEmail()})" >User</span>
+    </label> <br>
+
+    <label for="recipe">Recipe: <br>
+        <a id="recipe" th:href="@{'/recipes/' + ${favorite.getRecipe().id}} " th:text="|${favorite.getRecipe().title}|">Recipe</a>
+    </label>   <br>
+
+    <label for="rating">Rating: <br>
+        <a id="rating" th:text="${favorite.getRating()}" >FirstSnack</a>
+    </label> <br>
+
+    <label for="createdAt">CreatedAt: <br>
+        <a id="createdAt" th:text="${favorite.getCreatedAt()}">CreatedAt</a>
+    </label> <br>
+</body>
+</html>

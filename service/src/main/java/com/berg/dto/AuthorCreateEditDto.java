@@ -1,13 +1,12 @@
 package com.berg.dto;
 
-import com.berg.entity.Recipe;
 import lombok.Value;
 
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 @Value
 public class AuthorCreateEditDto {
 
+    @NotNull
     String name;
-    List<Recipe> recipes;
 }

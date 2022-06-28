@@ -2,8 +2,8 @@ package com.berg.service;
 
 import com.berg.dto.AuthorCreateEditDto;
 import com.berg.dto.AuthorReadDto;
-import com.berg.mapper.AuthorCreateEditMapper;
-import com.berg.mapper.AuthorReadMapper;
+import com.berg.mapper.AuthorCreateEditDtoToAuthorMapper;
+import com.berg.mapper.AuthorToReadDtoMapper;
 import com.berg.repositary.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,29 +18,29 @@ import java.util.Optional;
 public class AuthorService {
 
     private final AuthorRepository authorRepository;
-    private final AuthorCreateEditMapper authorCreateEditMapper;
-    private final AuthorReadMapper authorReadMapper;
+    private final AuthorCreateEditDtoToAuthorMapper authorCreateEditDtoToAuthorMapper;
+    private final AuthorToReadDtoMapper authorToReadDtoMapper;
 
     @Transactional
     public Optional<AuthorReadDto> update(Long id, AuthorCreateEditDto authorDto){
         return authorRepository.findById(id)
-                .map(entity -> authorCreateEditMapper.map(authorDto, entity))
+                .map(entity -> authorCreateEditDtoToAuthorMapper.map(authorDto, entity))
                 .map(authorRepository::saveAndFlush)
-                .map(authorReadMapper::map);
+                .map(authorToReadDtoMapper::map);
     }
 
     @Transactional
     public AuthorReadDto create(AuthorCreateEditDto authorDto) {
         return Optional.of(authorDto)
-                .map(authorCreateEditMapper::map)
+                .map(authorCreateEditDtoToAuthorMapper::map)
                 .map(authorRepository::save)
-                .map(authorReadMapper::map)
+                .map(authorToReadDtoMapper::map)
                 .orElseThrow();
     }
 
     public Optional<AuthorReadDto> findById(Long id) {
         return authorRepository.findById(id)
-                .map(authorReadMapper::map);
+                .map(authorToReadDtoMapper::map);
     }
 
     @Transactional
@@ -48,6 +48,7 @@ public class AuthorService {
         return authorRepository.findById(id)
                 .map(author -> {
                     authorRepository.delete(author);
+                    authorRepository.flush();
                     return true;
                 })
                 .orElse(false);
@@ -55,7 +56,7 @@ public class AuthorService {
 
     public List<AuthorReadDto> findAll() {
         return authorRepository.findAll().stream()
-                .map(authorReadMapper::map)
+                .map(authorToReadDtoMapper::map)
                 .toList();
     }
 }

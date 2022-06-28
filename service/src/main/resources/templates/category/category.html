@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+</head>
+<body>
+    <label for="category">Category:
+        <span id="category" th:text="${category.getCategory()}">Category</span>
+    </label> <br>
+    <label for="recipes">Recipes:
+        <div id="recipes" th:each="recipe : ${category.getRecipes()}">
+            <a th:href="@{'/recipes/' + ${recipe.getId()}} " th:text="|${recipe.getId()}. ${recipe.getTitle}|">Recipe</a>
+        </div>
+    </label>
+</body>
+</html>

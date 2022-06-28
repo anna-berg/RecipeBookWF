@@ -5,13 +5,25 @@
     <title>Recipe</title>
 </head>
 <body>
-    <span th:text="${recipe.title}">Title</span><br>
-    <span th:text="${recipe.categoryRecipe.category}">CategoryRecipe</span><br>
-    <span th:text="${recipe.description}">Description</span><br>
-    <span th:text="${recipe.author.name}">Author</span><br>
-    <span th:text="${recipe.measure}">Measure</span><br>
-    <div th:each="product : ${recipe.products}">
-        <span th:text="${product.name}">Product Name</span><br>
-    </div>
+    <label for="title">Title:
+        <span id="title" th:text="${recipe.title}">Title</span>
+    </label> <br>
+    <label for="category">Category:
+        <span id="category" th:text="${recipe.categoryRecipe.category}">CategoryRecipe</span>
+    </label><br>
+    <label for="description">Description:
+        <span id="description" th:text="${recipe.description}">Description</span>
+    </label><br>
+    <label for="author">Author:
+        <span id="author" th:text="${recipe.author.name}">Author</span>
+    </label><br>
+    <label for="measure">Measure:
+        <span id="measure" th:text="${recipe.measure}">Measure</span>
+    </label><br>
+    <label for="products">Products:
+        <div th:each="product : ${recipe.products}">
+            <span id="products" th:text="${product.name}">Product Name</span><br>
+        </div>
+    </label>
 </body>
 </html>

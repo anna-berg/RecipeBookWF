@@ -2,8 +2,8 @@ package com.berg.service;
 
 import com.berg.dto.UserCreateEditDto;
 import com.berg.dto.UserReadDto;
-import com.berg.mapper.UserCreateEditMapper;
-import com.berg.mapper.UserReadMapper;
+import com.berg.mapper.UserCreateEditToUserMapper;
+import com.berg.mapper.UserToReadDtoMapper;
 import com.berg.repositary.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,35 +18,35 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserReadMapper userReadMapper;
-    private final UserCreateEditMapper userCreateEditMapper;
+    private final UserToReadDtoMapper userToReadDtoMapper;
+    private final UserCreateEditToUserMapper userCreateEditToUserMapper;
 
     public List<UserReadDto> findAll() {
         return userRepository.findAll().stream()
-                .map(userReadMapper::map)
+                .map(userToReadDtoMapper::map)
                 .toList();
     }
 
     public Optional<UserReadDto> findById(Long id) {
         return userRepository.findById(id)
-                .map(userReadMapper::map);
+                .map(userToReadDtoMapper::map);
     }
 
     @Transactional
     public UserReadDto create(UserCreateEditDto userDto) {
         return Optional.of(userDto)
-                .map(userCreateEditMapper::map)
+                .map(userCreateEditToUserMapper::map)
                 .map(userRepository::save)
-                .map(userReadMapper::map)
+                .map(userToReadDtoMapper::map)
                 .orElseThrow();
     }
 
     @Transactional
     public Optional<UserReadDto> update(Long id, UserCreateEditDto userDto) {
         return userRepository.findById(id)
-                .map(entity -> userCreateEditMapper.map(userDto, entity))
+                .map(entity -> userCreateEditToUserMapper.map(userDto, entity))
                 .map(userRepository::saveAndFlush)
-                .map(userReadMapper::map);
+                .map(userToReadDtoMapper::map);
     }
 
     @Transactional
@@ -59,5 +59,4 @@ public class UserService {
                 })
                 .orElse(false);
     }
-
 }

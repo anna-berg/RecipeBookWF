@@ -52,7 +52,7 @@ public class AuthorController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/{id}/delete")
     public String delete(@PathVariable("id") Long id,
                          @ModelAttribute AuthorCreateEditDto authorDto) {
         if (!authorService.delete(id)){

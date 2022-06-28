@@ -85,7 +85,8 @@ CREATE TABLE group_day
     UNIQUE (group_id, position)
 );
 INSERT INTO author(name)
-VALUES ('Bam-Bam');
+VALUES ('Bam-Bam'),
+('Anna');
 
 INSERT INTO category_recipe(category)
 VALUES ('breakfast'),

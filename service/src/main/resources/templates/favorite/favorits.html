@@ -1,0 +1,15 @@
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite</title>
+</head>
+<body>
+    <label for="favorites">Favorite Recipe:
+        <div id="favorites" th:each="favorite : ${favorites}">
+            <a th:href="@{'/favorites/' + ${favorite.getId()}} " th:text="|${favorite.getUser().getName()}. ${favorite.getRecipe().title()}|">Favorites</a>
+        </div>
+    </label>
+</body>
+</html>

@@ -2,10 +2,12 @@ package com.berg.mapper;
 
 import com.berg.dto.ProductReadDto;
 import com.berg.entity.Product;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProductReadMapper implements Mapper<Product, ProductReadDto> {
+@RequiredArgsConstructor
+public class ProductToProductReadDtoMapper implements Mapper<Product, ProductReadDto> {
 
     @Override
     public ProductReadDto map(Product object) {
@@ -14,7 +16,6 @@ public class ProductReadMapper implements Mapper<Product, ProductReadDto> {
                 object.getProteins(),
                 object.getFats(),
                 object.getCarbohydrates(),
-                object.getType(),
-                object.getRecipes());
+                object.getType());
     }
 }

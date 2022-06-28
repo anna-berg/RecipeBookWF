@@ -22,7 +22,4 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
             "set a.name = :name" +
             " where a.id = :id")
     void updateName(String name, Long id);
-
-//    @Modifying(clearAutomatically = true)
-//    void updateName(String name, Author author);
 }

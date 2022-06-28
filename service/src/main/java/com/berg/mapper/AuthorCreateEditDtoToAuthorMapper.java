@@ -2,10 +2,14 @@ package com.berg.mapper;
 
 import com.berg.dto.AuthorCreateEditDto;
 import com.berg.entity.Author;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AuthorCreateEditMapper implements Mapper<AuthorCreateEditDto, Author> {
+@RequiredArgsConstructor
+public class AuthorCreateEditDtoToAuthorMapper implements Mapper<AuthorCreateEditDto, Author> {
+
+    private final RecipeReadDtoToRecipeMapper recipeReadDtoToRecipeMapper;
 
     @Override
     public Author map(AuthorCreateEditDto fromObject, Author toObject) {
@@ -22,6 +26,5 @@ public class AuthorCreateEditMapper implements Mapper<AuthorCreateEditDto, Autho
 
     private void copy(AuthorCreateEditDto object, Author author) {
         author.setName(object.getName());
-        author.setRecipes(object.getRecipes());
     }
 }

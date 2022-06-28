@@ -2,13 +2,11 @@ package com.berg.integration.service;
 
 import com.berg.dto.AuthorCreateEditDto;
 import com.berg.dto.AuthorReadDto;
-import com.berg.entity.Recipe;
 import com.berg.integration.IntegrationTestBase;
 import com.berg.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,16 +36,14 @@ class AuthorServiceIT extends IntegrationTestBase {
 
     @Test
     void create(){
-        List<Recipe> recipes = new ArrayList<>();
-        var ivan = new AuthorCreateEditDto("Ivan", recipes);
+        var ivan = new AuthorCreateEditDto("Ivan");
         var actualResult = authorService.create(ivan);
         assertEquals(actualResult.getName(), ivan.getName());
     }
 
     @Test
     void update(){
-        List<Recipe> recipes = new ArrayList<>();
-        var ivan = new AuthorCreateEditDto("Ivan", recipes);
+        var ivan = new AuthorCreateEditDto("Ivan");
         var actualResult = authorService.update(AUTHOR_ID, ivan);
         actualResult.ifPresent(author -> assertEquals(author.getName(), ivan.getName()));
     }

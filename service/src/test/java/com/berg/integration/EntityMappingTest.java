@@ -1,6 +1,6 @@
 package com.berg.integration;
 
-import com.berg.mapper.RecipeReadMapper;
+import com.berg.mapper.RecipeToRecipeReadDtoMapper;
 import com.berg.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 
@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 class EntityMappingTest extends IntegrationTestBase {
 
     private final RecipeService recipeService;
-    private final RecipeReadMapper recipeReadMapper;
+    private final RecipeToRecipeReadDtoMapper recipetoRecipeReadDtoMapper;
     private final EntityManager entityManager;
 //    @Test
 //    void SaveRecipeTest() {
