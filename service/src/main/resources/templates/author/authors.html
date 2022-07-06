@@ -5,7 +5,9 @@
     <title>Authors</title>
 </head>
 <body>
-<form action="/authors" method="post" th:object="${authors}">
+    <div th:insert="~{fragment :: header}"></div>
+
+    <form action="/authors" method="post" th:object="${authors}">
     <div th:each="author : ${authors}">
         <a th:href="@{'/authors/' + ${author.getId()}} " th:text="|${author.getId()}. ${author.getName()}|">Author</a>
     </div>

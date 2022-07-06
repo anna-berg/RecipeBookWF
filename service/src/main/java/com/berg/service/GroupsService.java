@@ -1,9 +1,9 @@
 package com.berg.service;
 
-import com.berg.dto.GroupsCreateDto;
-import com.berg.dto.GroupsReadDto;
-import com.berg.mapper.GroupsCreateDtoToGroupsMapper;
-import com.berg.mapper.GroupsToGroupsReadDtoMapper;
+import com.berg.dto.group.GroupsCreateDto;
+import com.berg.dto.group.GroupsReadDto;
+import com.berg.mapper.groupes.GroupsCreateDtoToGroupsMapper;
+import com.berg.mapper.groupes.GroupsToGroupsReadDtoMapper;
 import com.berg.repositary.GroupRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

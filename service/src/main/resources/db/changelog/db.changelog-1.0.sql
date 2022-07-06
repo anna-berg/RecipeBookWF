@@ -138,3 +138,10 @@ create table if not exists group_day
         constraint fkoleltlburt6mxdg77o66s3al
             references groups
 );
+
+--changeset annaberg:11
+alter table users
+add column created_by varchar(255);
+
+alter table users
+add column modified_by varchar(255);

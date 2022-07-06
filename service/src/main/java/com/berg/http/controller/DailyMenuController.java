@@ -1,6 +1,6 @@
 package com.berg.http.controller;
 
-import com.berg.dto.DailyMenuCreateDto;
+import com.berg.dto.dailyMenu.DailyMenuCreateDto;
 import com.berg.service.DailyMenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

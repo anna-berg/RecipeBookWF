@@ -6,6 +6,8 @@
     <title>Categories</title>
 </head>
 <body>
+    <div th:insert="~{fragment :: header}"></div>
+
     <label for="categories">Categories:
         <div id="categories" th:each="category : ${categories}">
             <a th:href="@{'/categories/' + ${category.getId()}} " th:text="|${category.getId()}. ${category.getCategory()}|">Category</a>

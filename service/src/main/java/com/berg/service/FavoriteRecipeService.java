@@ -1,9 +1,9 @@
 package com.berg.service;
 
-import com.berg.dto.FavoriteRecipeCreateDto;
-import com.berg.dto.FavoriteRecipeReadDto;
-import com.berg.mapper.FavoriteRecipeCreateDtoToFavoriteRecipeMapper;
-import com.berg.mapper.FavoriteRecipeToReadDtoMapper;
+import com.berg.dto.favorite.FavoriteRecipeCreateDto;
+import com.berg.dto.favorite.FavoriteRecipeReadDto;
+import com.berg.mapper.favorite.FavoriteRecipeCreateDtoToFavoriteRecipeMapper;
+import com.berg.mapper.favorite.FavoriteRecipeToReadDtoMapper;
 import com.berg.repositary.FavoriteRecipeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.berg.http.controller;
 
-import com.berg.dto.CategoryCreateDto;
+import com.berg.dto.category.CategoryCreateDto;
 import com.berg.service.CategoryRecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

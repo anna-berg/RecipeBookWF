@@ -1,8 +1,8 @@
 package com.berg.service;
 
 import com.berg.dto.GroupDayReadDto;
-import com.berg.mapper.GroupDayReadDtoToGroupDay;
-import com.berg.mapper.GroupDayToGroupDayReadDto;
+import com.berg.mapper.groupDay.GroupDayReadDtoToGroupDay;
+import com.berg.mapper.groupDay.GroupDayToGroupDayReadDto;
 import com.berg.repositary.GroupDayRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

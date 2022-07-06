@@ -6,17 +6,9 @@
     <title>Users</title>
 </head>
 <body>
-    <form action="/users">
-        <label for="firstname"> Firstname:
-            <input id="firstname" type="text" name="firstname">
-        </label>
-        <label for="lastname"> Lastname:
-            <input id="lastname" type="text" name="lastname">
-        </label>
-        <button type="submit">Filter</button>
-    </form>
+    <div th:insert="~{fragment :: header}"></div>
     <div th:each="user : ${users}">
-        <a th:href="@{'/users/' + ${user.id}} " th:text="|${user.id}. ${user.name()}|">User</a>
+        <a th:href="@{'/users/' + ${user.id}} " th:text="|${user.id}. ${user.name} (${user.getEmail()})|">User</a>
     </div>
 </body>
 </html>

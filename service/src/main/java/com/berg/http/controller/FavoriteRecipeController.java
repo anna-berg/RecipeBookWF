@@ -1,6 +1,6 @@
 package com.berg.http.controller;
 
-import com.berg.dto.FavoriteRecipeCreateDto;
+import com.berg.dto.favorite.FavoriteRecipeCreateDto;
 import com.berg.service.FavoriteRecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

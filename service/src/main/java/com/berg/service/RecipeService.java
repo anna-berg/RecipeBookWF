@@ -1,9 +1,9 @@
 package com.berg.service;
 
-import com.berg.dto.RecipeCreateDto;
-import com.berg.dto.RecipeReadDto;
-import com.berg.mapper.RecipeCreateDtoToRecipeMapper;
-import com.berg.mapper.RecipeToRecipeReadDtoMapper;
+import com.berg.dto.recipe.RecipeCreateDto;
+import com.berg.dto.recipe.RecipeReadDto;
+import com.berg.mapper.recipe.RecipeCreateDtoToRecipeMapper;
+import com.berg.mapper.recipe.RecipeToRecipeReadDtoMapper;
 import com.berg.repositary.RecipeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,11 @@ public class RecipeService {
     private final RecipeCreateDtoToRecipeMapper recipeCreateDtoToRecipeMapper;
     private final RecipeToRecipeReadDtoMapper recipetoRecipeReadDtoMapper;
 
-    public List<RecipeReadDto> findAll() {
+//    public List<RecipeReadDto> findAll(RecipeFilter filter) {
+//        return recipeRepository.findByFilter(filter);
+//    }
+
+        public List<RecipeReadDto> findAll() {
         return recipeRepository.findAll().stream()
                 .map(recipetoRecipeReadDtoMapper::map)
                 .toList();
@@ -45,10 +49,11 @@ public class RecipeService {
     public Optional<RecipeReadDto> update(Long id, RecipeCreateDto recipeDto) {
         return recipeRepository.findById(id)
                 .map(recipe -> recipeCreateDtoToRecipeMapper.map(recipeDto, recipe))
-                .map(recipeRepository::saveAndFlush)
+                .map(recipeRepository::save)
                 .map(recipetoRecipeReadDtoMapper::map);
     }
 
+    @Transactional
     public boolean delete(Long id) {
         return recipeRepository.findById(id)
                 .map(recipe -> {

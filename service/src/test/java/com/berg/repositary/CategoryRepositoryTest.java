@@ -6,7 +6,6 @@ import com.berg.util.EntityHelper;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.context.jdbc.Sql;
 
 import javax.persistence.EntityManager;
 import java.util.stream.Collectors;
@@ -14,9 +13,6 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Sql({
-        "classpath:sql/data.sql"
-})
 @RequiredArgsConstructor
 class CategoryRepositoryTest extends IntegrationTestBase {
 

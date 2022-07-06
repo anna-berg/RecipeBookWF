@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+public interface RecipeRepository extends JpaRepository<Recipe, Long>, FilterRecipeRepositary {
 
     @Query("select r from Recipe r" +
             " where r.categoryRecipe.category = :category")
@@ -24,4 +25,10 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
             " join fetch r.products p" +
             " where p.id in (:productId)")
     List<Recipe> findAllByProducts(Long ... productId);
+
+    @Query("select r" +
+            " from Recipe r " +
+            "join fetch r.products p " +
+            "where p.name like :name")
+    Optional<Recipe> findByProductName(String name);
 }

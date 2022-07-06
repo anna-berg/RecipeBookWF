@@ -1,7 +1,7 @@
 package com.berg.http.rest;
 
-import com.berg.dto.UserCreateEditDto;
-import com.berg.dto.UserReadDto;
+import com.berg.dto.user.UserCreateEditDto;
+import com.berg.dto.user.UserReadDto;
 import com.berg.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

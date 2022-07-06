@@ -4,7 +4,6 @@
 #  driver: org.postgresql.Driver
 #  url:jdbc: postgresql://localhost:5433/recipe_book
 #  hosts: localhost, 127.0.0.1
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/recipe_book
@@ -17,8 +16,8 @@ spring:
       format_sql: true
       hbm2ddl.auto: validate
       dialect:  org.hibernate.dialect.PostgreSQLDialect
-#   что бы транзакции не открывались на уровне контроллеров
     open-in-view: false
+#    open-in-view: false #   что бы транзакции не открывались на уровне контроллеров
 
 logging:
   level:

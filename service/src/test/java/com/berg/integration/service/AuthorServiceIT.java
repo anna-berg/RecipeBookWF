@@ -1,7 +1,7 @@
 package com.berg.integration.service;
 
-import com.berg.dto.AuthorCreateEditDto;
-import com.berg.dto.AuthorReadDto;
+import com.berg.dto.author.AuthorCreateEditDto;
+import com.berg.dto.author.AuthorReadDto;
 import com.berg.integration.IntegrationTestBase;
 import com.berg.service.AuthorService;
 import lombok.RequiredArgsConstructor;

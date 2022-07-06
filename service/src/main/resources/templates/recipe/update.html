@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe</title>
+</head>
+<body>
+    <div th:insert="~{fragment :: header}"></div>
+    <br>
+    <form th:action="@{/recipes/{recipeId}/update(recipeId=${id})}"  method="post">
+        <h3>Create Recipe</h3><br>
+        <label for="title">Title:
+            <input id="title" type="text" name="title" th:value="${recipe.title}">
+        </label><br>
+        <div>
+            <label for="author">Author:
+                <select id="author" name="authorId">
+                    <option th:each="author : ${authors}"
+                            th:value="${author.getId()}"
+                            th:text="${author.getName()}">Author
+                    </option>
+                </select>
+            </label>
+        </div>
+
+        <label for="description">Description:
+            <input id="description" type="text" name="description" th:value="${recipe.description}">
+        </label><br>
+        <label for="measure">Measure:
+            <input id="measure" type="text" name="measure" th:value="${recipe.measure()}">
+        </label><br>
+        <div>
+            <label for="category">Categories:
+                <select id="category" name="categoryId">
+                    <option th:each="category : ${categories}"
+                            th:value="${category.getId()}"
+                            th:text="${category.getCategory()}">category</option>
+                </select>
+            </label>
+        </div>
+
+        <div th:each="product : ${products}">
+            <input th:id="${product}" type="checkbox" name="products" th:value="${product.getId()}">
+            <label th:for="${product}" th:text="${product.getName()}">product</label>
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

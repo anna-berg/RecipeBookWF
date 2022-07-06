@@ -1,6 +1,6 @@
 package com.berg.http.controller;
 
-import com.berg.dto.GroupsCreateDto;
+import com.berg.dto.group.GroupsCreateDto;
 import com.berg.service.GroupsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

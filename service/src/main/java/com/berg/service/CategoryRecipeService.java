@@ -1,9 +1,9 @@
 package com.berg.service;
 
-import com.berg.dto.CategoryCreateDto;
-import com.berg.dto.CategoryRecipeReadDto;
-import com.berg.mapper.CategoryCreateDtoToCategoryMapper;
-import com.berg.mapper.CategoryRecipeToCategoryRecipeReadDtoMapper;
+import com.berg.dto.category.CategoryCreateDto;
+import com.berg.dto.category.CategoryRecipeReadDto;
+import com.berg.mapper.category.CategoryCreateDtoToCategoryMapper;
+import com.berg.mapper.category.CategoryRecipeToCategoryRecipeReadDtoMapper;
 import com.berg.repositary.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

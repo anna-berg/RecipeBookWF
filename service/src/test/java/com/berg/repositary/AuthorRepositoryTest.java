@@ -14,9 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Sql({
-        "classpath:sql/data.sql"
-})
 @RequiredArgsConstructor
 class AuthorRepositoryTest extends IntegrationTestBase {
 

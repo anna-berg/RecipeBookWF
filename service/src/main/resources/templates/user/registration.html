@@ -5,8 +5,32 @@
     <title>Registration</title>
 </head>
 <body>
-<form th:action="@{/authors}" method="post" th:object="${authors}">
+<form th:action="@{/users}" enctype="multipart/form-data" method="post" th:object="${user}">
+    <label for="email">Email:
+        <input id="email" type="text" name="email" th:value="*{getEmail()}">
+    </label><br>
+    <label for="rawPassword">Password:
+        <input id="rawPassword" type="password" name="rawPassword">
+    </label><br>
+    <label for="name">Name:
+        <input id="name" type="text" name="name" th:value="*{getName()}">
+    </label><br>
 
+    <div th:each="role : ${roles}">
+        <input th:id="${role}" type="radio" name="role" th:value="${role}" th:checked="${role == user.role}">
+        <label th:for="${role}" th:text="${role}">Role name</label>
+    </div>
+
+    <div th:each="gender : ${genders}">
+        <input th:id="${gender}" type="radio" name="gender" th:value="${gender}" th:checked="${gender == user.gender}">
+        <label th:for="${gender}" th:text="${gender}">gender</label>
+    </div>
+
+    <button type="submit">Register</button>
+</form>
+<div th:if="${errors}">
+    <p style="color: red" th:each="error : ${errors}" th:text="${error.defaultMessage}">Error message</p>
+</div>
 </form>
 </body>
 </html>

@@ -1,6 +1,6 @@
 package com.berg.http.controller;
 
-import com.berg.dto.AuthorCreateEditDto;
+import com.berg.dto.author.AuthorCreateEditDto;
 import com.berg.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

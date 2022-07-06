@@ -1,9 +1,9 @@
 package com.berg.service;
 
-import com.berg.dto.ProductCreateDto;
-import com.berg.dto.ProductReadDto;
-import com.berg.mapper.ProductCreateDtoToProductMapper;
-import com.berg.mapper.ProductToProductReadDtoMapper;
+import com.berg.dto.product.ProductCreateDto;
+import com.berg.dto.product.ProductReadDto;
+import com.berg.mapper.product.ProductCreateDtoToProductMapper;
+import com.berg.mapper.product.ProductToProductReadDtoMapper;
 import com.berg.repositary.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

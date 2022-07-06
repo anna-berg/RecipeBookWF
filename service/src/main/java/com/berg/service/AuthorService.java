@@ -1,9 +1,9 @@
 package com.berg.service;
 
-import com.berg.dto.AuthorCreateEditDto;
-import com.berg.dto.AuthorReadDto;
-import com.berg.mapper.AuthorCreateEditDtoToAuthorMapper;
-import com.berg.mapper.AuthorToReadDtoMapper;
+import com.berg.dto.author.AuthorCreateEditDto;
+import com.berg.dto.author.AuthorReadDto;
+import com.berg.mapper.author.AuthorCreateEditDtoToAuthorMapper;
+import com.berg.mapper.author.AuthorToReadDtoMapper;
 import com.berg.repositary.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

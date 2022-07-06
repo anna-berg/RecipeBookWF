@@ -1,9 +1,9 @@
 package com.berg.service;
 
-import com.berg.dto.DailyMenuCreateDto;
-import com.berg.dto.DailyMenuReadDto;
-import com.berg.mapper.DailyMenuCreateDtoToDailyMenuMapper;
-import com.berg.mapper.DailyMenuToDailyMenuReadDto;
+import com.berg.dto.dailyMenu.DailyMenuCreateDto;
+import com.berg.dto.dailyMenu.DailyMenuReadDto;
+import com.berg.mapper.dailyMenu.DailyMenuCreateDtoToDailyMenuMapper;
+import com.berg.mapper.dailyMenu.DailyMenuToDailyMenuReadDto;
 import com.berg.repositary.DailyMenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+<body>
+    <div style="background-color: lightgray; border-bottom-color: dimgrey;
+                border-bottom-style: solid" th:fragment="header">
+        <span>
+            <br>
+            <h1 style="alignment: left">Recipe Book</h1>
+            <a th:href="@{'/recipes/create'}"> Create Recipe - | - </a>
+            <a th:href="@{'/recipes'}" > All Recipes - | - </a>
+            <a th:href="@{'/categories'}"> Categories - | - </a>
+            <a th:href="@{'/menus'}"> Menus - | - </a>
+            <a th:href="@{'/favorites'}"> Favorites - | - </a>
+            <a th:href="@{'/groups'}"> Groups - | - </a>
+            <a th:href="@{'/users'}"> Users - | - </a>
+        </span>
+        <span>
+            <label style="float: right" for="username">Username:
+                <span id = "username" th:text="${#authentication.principal.username}"></span>
+                <span id = "role" th:text="${#authentication.getAuthorities()}"></span>
+            </label><br>
+        </span>
+        <span>
+            <form  action="/logout" method="post">
+            <button style="float: right" type="submit">Logout</button>
+            </form>
+        </span>
+    </div>
+</body>
+</html>

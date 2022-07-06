@@ -1,6 +1,6 @@
 package com.berg.integration;
 
-import com.berg.mapper.RecipeToRecipeReadDtoMapper;
+import com.berg.mapper.recipe.RecipeToRecipeReadDtoMapper;
 import com.berg.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 

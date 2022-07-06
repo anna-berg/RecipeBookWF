@@ -5,7 +5,9 @@
     <title>Author</title>
 </head>
 <body>
-<form th:action="@{/author/{authorId}/update(authorId=${author.id})}" method="post" th:object="${author}">
+    <div th:insert="~{fragment :: header}"></div>
+
+    <form th:action="@{/author/{authorId}/update(authorId=${author.id})}" method="post" th:object="${author}">
     <label for="name">Username:
         <input id="name" type="text" name="name" th:value="*{name}">
     </label><br>

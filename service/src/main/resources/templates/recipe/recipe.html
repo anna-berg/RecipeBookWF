@@ -5,9 +5,13 @@
     <title>Recipe</title>
 </head>
 <body>
-    <label for="title">Title:
-        <span id="title" th:text="${recipe.title}">Title</span>
-    </label> <br>
+    <div th:insert="~{fragment :: header}"></div>
+    <br>
+    <a th:href="@{'/recipes/'+ ${recipe.id} + '/update'}" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"> Update Recipe - | - </a>
+    <a th:href="@{'/recipes/'+ ${recipe.id} + '/delete'}" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"> Delete Recipe </a><br>
+
+    <h3 th:text="${recipe.title}">Title</h3>
+    <br>
     <label for="category">Category:
         <span id="category" th:text="${recipe.categoryRecipe.category}">CategoryRecipe</span>
     </label><br>
@@ -21,9 +25,11 @@
         <span id="measure" th:text="${recipe.measure}">Measure</span>
     </label><br>
     <label for="products">Products:
-        <div th:each="product : ${recipe.products}">
-            <span id="products" th:text="${product.name}">Product Name</span><br>
-        </div>
+        <ul>
+            <li th:each="product : ${recipe.products}">
+                <span id="products" th:text="${product.name}">Product Name</span><br>
+            </li>
+        </ul>
     </label>
 </body>
 </html>
